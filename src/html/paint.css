@@ -1,0 +1,9 @@
+.main {
+  display: block;
+}
+
+.main .board {
+  display: block;
+  float: left;
+}
+/*# sourceMappingURL=paint.css.map */
