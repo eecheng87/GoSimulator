@@ -1,0 +1,15 @@
+.main {
+    display: grid;
+    //grid-template-columns: 600px 1fr;
+    grid-template-areas: 'board coor_info' 'selection_bar  selection_bar';
+    .board {
+        grid-area: board;
+    }
+    .coordinate {
+        grid-area: coor_info;
+        font-size: large;
+    }
+    .selection_bar {
+        grid-area: selection_bar;
+    }
+}

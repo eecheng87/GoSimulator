@@ -14,8 +14,8 @@ function paint_board() {
     let canv = document.querySelector('.board_cvs');
     if (canv.getContext) {
         let ctx = canv.getContext('2d');
-        canv.width = board_height + 50;
-        canv.height = board_height + 50;
+        canv.width = board_height + 10;
+        canv.height = board_height + 10;
         // paint base
         ctx.fillStyle = board_color;
         ctx.fillRect(board_offsetX, board_offsetY, board_width, board_height);

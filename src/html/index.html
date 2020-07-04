@@ -2,14 +2,26 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/paint.css">
+    <link rel="stylesheet" type="text/css" href="../css/paint.css">
 </head>
 
 <body class="main">
     <div class="board">
         <canvas class="board_cvs"></canvas>
     </div>
+    <div class="coordinate">
+    </div>
+    <div class="selection_bar">
+        <div class="select_sente">
+            <div class="discrep">Sente</div>
+            <input type="checkbox" class="sente" id="normal" value="Yes" onclick="check(this);" />Normal
+            <input type="checkbox" class="sente" id="black" value="Yes" onclick="check(this);" />Black
+            <input type="checkbox" class="sente" id="white" value="Yes" onclick="check(this);" />White
+        </div>
+    </div>
 </body>
 <script src="../js/paint.js"></script>
+<script src="../js/logic.js"></script>
+<script src="../js/check.js"></script>
 
 </html>

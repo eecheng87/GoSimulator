@@ -1,0 +1,86 @@
+alive 活（棋）
+aji 味
+areas 實地
+atari 打吃
+Baduk 圍棋
+Black 黑棋
+board 棋盤
+bowl 棋盒
+capture 提子
+capturingraces 對殺
+compensationpoints 貼目
+connection 連線
+corner 角
+dame 單官
+dan（業餘/職業）（）段
+danpro 職業（）段
+dead 死（棋）
+divinemove 勝負手
+edge 邊
+eye 眼
+falseeyes 假眼
+fiveby five 五五
+forcingmoves 劫財
+fuseki 佈局
+Go 圍棋
+gote 後手
+gridsize 棋盤尺寸（9X9，13X13，19X19）
+handicap 泛指包括讓子和貼目等形式在內的指導棋
+hane 扳
+hayago 快棋
+higheye 高目
+highkakari 高掛
+Igo 圍棋
+influence-orientedapproach 注重外勢
+jigo 和棋
+joseki 定石/定式
+jungsuk 定石/定式
+kakari 掛
+kifu 棋譜
+ko 劫
+kofights 打劫
+komi 貼目
+korigatachi 愚形
+kosumi 小尖
+kyu 級
+ladder 徵子
+largehigh eye 超高目
+liberties 氣
+lightness 薄
+lowkakari 低掛
+miai 見合
+monkeyjump 伸腿
+move 一招棋、一手棋
+moyo 模樣
+myoushu 妙手
+nakade 點殺
+net 枷吃
+nidanbane 連扳
+originof heaven 天元
+outsidethe eye 目外
+outsidethe large eye 超目外
+pass 停一手
+rank 級別、段位
+resignation 投子認負
+rule-sets（中國/日本/韓國）規則
+score 點目
+seki 雙活
+sente 先手
+separation 分離/分斷
+shape 棋形
+side 邊
+smalleye 小目
+snapback 倒撲
+starpoint 星位
+stone 棋子
+tengen 天元
+territorialapproach 注重實地 
+territories 實地
+tesuji 手筋
+thickness 厚實
+threeby three 三三
+tsumego 詰棋/死活題
+Weiqi 圍棋
+White 白棋
+yose 官子
+yosu miru 試應手
