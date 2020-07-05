@@ -1,6 +1,6 @@
-function check(input) {
-
-    let checkboxes = document.querySelectorAll('.sente');
+// checkbox logic
+function check(input, clas) {
+    let checkboxes = document.querySelectorAll(`.${clas}`);
     // uncheck all
     checkboxes.forEach(ins => {
         ins.checked = ins.checked ? false : ins.checked;
@@ -13,3 +13,11 @@ function check(input) {
         input.checked = true;
     }
 }
+
+function init_checkbox() {
+    // configure default setting
+    let sente = document.querySelector(".select_sente input[id='normal']");
+    sente.checked = true;
+}
+
+init_checkbox();

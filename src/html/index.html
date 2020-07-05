@@ -14,9 +14,14 @@
     <div class="selection_bar">
         <div class="select_sente">
             <div class="discrep">Sente</div>
-            <input type="checkbox" class="sente" id="normal" value="Yes" onclick="check(this);" />Normal
-            <input type="checkbox" class="sente" id="black" value="Yes" onclick="check(this);" />Black
-            <input type="checkbox" class="sente" id="white" value="Yes" onclick="check(this);" />White
+            <input type="checkbox" class="sente" id="normal" value="Yes" onclick="check(this, 'sente');" />Normal
+            <input type="checkbox" class="sente" id="black" value="Yes" onclick="check(this, 'sente');" />Black
+            <input type="checkbox" class="sente" id="white" value="Yes" onclick="check(this, 'sente');" />White
+        </div>
+        <div class="select_mode">
+            <div class="discrep">Mode</div>
+            <input type="checkbox" class="mode" id="simulation" value="Yes" onclick="check(this, 'mode');" />Simulation
+            <input type="checkbox" class="mode" id="battle" value="Yes" onclick="check(this, 'mode');" />Battle
         </div>
     </div>
 </body>

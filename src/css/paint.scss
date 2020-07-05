@@ -11,5 +11,13 @@
     }
     .selection_bar {
         grid-area: selection_bar;
+        display: grid;
+        grid-template-areas: 'sente mode';
+        .select_sente {
+            grid-area: sente;
+        }
+        .select_mode {
+            grid-area: mode;
+        }
     }
 }

@@ -16,7 +16,19 @@ function paint_stone(x, y, color) {
     ctx.beginPath();
     ctx.arc(x * block_size + block_size, y * block_size + block_size, stone_r, 0, 2 * Math.PI, false);
     ctx.fill();
+    ctx.strokeStyle = color;
     ctx.stroke();
+}
+
+function change_turn() {
+    // decide who is sente
+    let normal = document.querySelector(".select_sente input[id='normal']");
+    let black = document.querySelector(".select_sente input[id='black']");
+    if (normal.checked) {
+        turn = (turn == 1) ? 2 : 1;
+    } else {
+        turn = black.checked ? 2 : 1;
+    }
 }
 
 function cal_pos(x, y) {
@@ -31,5 +43,7 @@ canv.addEventListener('mousemove', e => {
 
 canv.addEventListener('mousedown', e => {
     let [x, y] = cal_pos(e.offsetX, e.offsetY);
-    paint_stone(x, y, color_black);
+    change_turn();
+    let color = turn == 1 ? color_white : color_black;
+    paint_stone(x, y, color);
 })

@@ -22,5 +22,20 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: selection_bar;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'sente mode';
+}
+
+.main .selection_bar .select_sente {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: sente;
+}
+
+.main .selection_bar .select_mode {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: mode;
 }
 /*# sourceMappingURL=paint.css.map */
