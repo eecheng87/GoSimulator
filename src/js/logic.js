@@ -2,13 +2,25 @@ const stone_r = 12;
 let canv = document.querySelector('.board_cvs');
 let html_coor = document.querySelector('.coordinate');
 /*
-    0 : empty
-    1 : white
-    2 : black
+    Global definition
+        0 : empty
+        1 : white
+        2 : black
 */
 let turn = 1;
-let board_state = Array(19).fill().map(() => Array(19).fill(0));
+let board_state = [];
 
+init_board_state();
+
+function init_board_state() {
+    for (const index of Array(19 * 19).keys()) {
+        board_state.push({
+            coordinates: `${inv_flatten(index)}`,
+            content: 0,
+            eye: 0
+        });
+    }
+}
 
 function paint_stone(x, y, color) {
     let ctx = canv.getContext('2d');
@@ -19,6 +31,19 @@ function paint_stone(x, y, color) {
     ctx.strokeStyle = color;
     ctx.stroke();
 }
+
+function flatten(x, y) {
+    // convert coordinates x and y into one dimension value
+    return 19 * x + y;
+}
+
+function inv_flatten(index) {
+    // inverse of flatten operation
+    let x = Math.floor(index / 19);
+    let y = index % 19;
+    return `(${x}, ${y})`;
+}
+
 
 function change_turn() {
     // decide who is sente
@@ -36,6 +61,11 @@ function cal_pos(x, y) {
     return [Math.round((x - block_offsetX) / block_size), Math.round((y - block_offsetY) / block_size)];
 }
 
+function repeat_handler(x, y) {
+    // check next move whether valid
+    return board_state[flatten(x, y)].content == 0 ? 1 : -1;
+}
+
 canv.addEventListener('mousemove', e => {
     let [x, y] = cal_pos(e.offsetX, e.offsetY);
     html_coor.innerHTML = `(${x + 1} ,${y + 1})`;
@@ -43,6 +73,14 @@ canv.addEventListener('mousemove', e => {
 
 canv.addEventListener('mousedown', e => {
     let [x, y] = cal_pos(e.offsetX, e.offsetY);
+
+    if (repeat_handler(x, y) < 0) {
+        console.log('invalid move');
+        return;
+    } else {
+        board_state[flatten(x, y)].content = turn;
+    }
+
     change_turn();
     let color = turn == 1 ? color_white : color_black;
     paint_stone(x, y, color);
