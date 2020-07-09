@@ -46,4 +46,13 @@ function paint_board() {
     }
 }
 
+function clear_board() {
+    let canv = document.querySelector('.board_cvs');
+    if (canv.getContext) {
+        let ctx = canv.getContext('2d');
+        ctx.clearRect(board_offsetX, board_offsetY, board_width, board_height);
+    }
+}
+
+
 paint_board();

@@ -7,8 +7,9 @@ let html_coor = document.querySelector('.coordinate');
         1 : white
         2 : black
 */
-let turn = 1;
+let turn = 2;
 let board_state = [];
+let global_flag = false;
 
 init_board_state();
 
@@ -17,7 +18,8 @@ function init_board_state() {
         board_state.push({
             coordinates: `${inv_flatten(index)}`,
             content: 0,
-            eye: 0
+            eye: 0,
+            visited: false /* used by `isEnclosed` */
         });
     }
 }
@@ -34,14 +36,15 @@ function paint_stone(x, y, color) {
 
 function flatten(x, y) {
     // convert coordinates x and y into one dimension value
-    return 19 * x + y;
+    // return -1 if coordinates are out of bound
+    return (x < 0 || y < 0 || x > 18 || y > 18) ? -1 : 19 * x + y;
 }
 
 function inv_flatten(index) {
     // inverse of flatten operation
     let x = Math.floor(index / 19);
     let y = index % 19;
-    return `(${x}, ${y})`;
+    return [x, y];
 }
 
 
@@ -66,6 +69,100 @@ function repeat_handler(x, y) {
     return board_state[flatten(x, y)].content == 0 ? 1 : -1;
 }
 
+function set_eye(x, y) {
+    // set how many eyes did stone in (x, y) have
+    let eyes = 0;
+    let stone = board_state[flatten(x, y)];
+    let neighbors = [flatten(x + 1, y), flatten(x - 1, y),
+        flatten(x, y + 1), flatten(x, y - 1)
+    ];
+    neighbors.forEach(index => {
+        eyes = (index < 0 || board_state[index].content > 0) ? eyes : eyes + 1;
+        if (index >= 0)
+            board_state[index].eye = board_state[index].content != 0 ?
+            board_state[index].eye - 1 : board_state[index].eye;
+    });
+    stone.eye = eyes;
+}
+
+function capture(x, y) {
+    // pass last stone as parameter
+    let last = board_state[flatten(x, y)];
+    let neighbors = [flatten(x + 1, y), flatten(x - 1, y),
+        flatten(x, y + 1), flatten(x, y - 1)
+    ];
+    neighbors.forEach(index => {
+        //console.log('try capture')
+        if (index < 0 || board_state[index].content == 0) return;
+        if (board_state[index].content != last.content) {
+            //console.log('one dfs start');
+            if (isEnclosed(index, board_state[index].content)) {
+                // console.log('Some stones will be captured');
+                capturing(index, board_state[index].content);
+            }
+        }
+        resetVisited();
+    });
+    resetVisited();
+}
+
+function isEnclosed(index, cap_color) {
+    // cap_color is color which will be taken
+    // if (board_state[index].visited) return true;
+    let [x, y] = inv_flatten(index);
+    let neighbors = [flatten(x + 1, y), flatten(x - 1, y),
+        flatten(x, y + 1), flatten(x, y - 1)
+    ];
+    let ans = true;
+    neighbors.forEach(cur => {
+        console.log(ans);
+        if (cur >= 0 && board_state[cur].content == 0) {
+            board_state[cur].visited = true;
+            ans = ans && false;
+        } else if (cur < 0 || (cur >= 0 && board_state[cur].content != cap_color)) {
+            // board_state[cur].visited = true;
+            ans = ans && true;
+        } else if (!board_state[cur].visited) {
+            board_state[cur].visited = true;
+            ans = ans && isEnclosed(cur, cap_color);
+        }
+    });
+    return ans;
+}
+
+function capturing(index, cap_color) {
+    // there're some stones should be captured
+    // feature of this funcion: clearing and update board state
+    let [x, y] = inv_flatten(index);
+    let neighbors = [flatten(x + 1, y), flatten(x - 1, y),
+        flatten(x, y + 1), flatten(x, y - 1)
+    ];
+    neighbors.forEach(cur => {
+        if (cur >= 0 && board_state[cur].content == cap_color) {
+            board_state[cur].content = 0;
+            board_state[cur].eye = 0;
+            capturing(cur, cap_color);
+        }
+    });
+
+}
+
+function update_board() {
+    // called after capturing
+    clear_board();
+    paint_board();
+    board_state.forEach(obj => {
+        let [x, y] = obj.coordinates.split(',');
+        if (obj.content > 0) {
+            paint_stone(x, y, obj.content == 1 ? color_white : color_black);
+        }
+    });
+}
+
+function resetVisited() {
+    board_state.forEach(obj => obj.visited = false);
+}
+
 canv.addEventListener('mousemove', e => {
     let [x, y] = cal_pos(e.offsetX, e.offsetY);
     html_coor.innerHTML = `(${x + 1} ,${y + 1})`;
@@ -78,10 +175,19 @@ canv.addEventListener('mousedown', e => {
         console.log('invalid move');
         return;
     } else {
-        board_state[flatten(x, y)].content = turn;
+        if (document.querySelector(".select_sente input[id='normal']").checked) {
+            board_state[flatten(x, y)].content = turn;
+        } else {
+            board_state[flatten(x, y)].content =
+                document.querySelector(".select_sente input[id='black']").checked ?
+                2 : 1;
+        }
     }
 
+    set_eye(x, y);
+    capture(x, y);
+    update_board();
+    //let color = turn == 1 ? color_white : color_black;
+    //paint_stone(x, y, color);
     change_turn();
-    let color = turn == 1 ? color_white : color_black;
-    paint_stone(x, y, color);
 })
