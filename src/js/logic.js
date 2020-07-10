@@ -97,7 +97,7 @@ function capture(x, y) {
         if (board_state[index].content != last.content) {
             //console.log('one dfs start');
             if (isEnclosed(index, board_state[index].content)) {
-                // console.log('Some stones will be captured');
+                console.log('Some stones will be captured');
                 capturing(index, board_state[index].content);
             }
         }
@@ -135,13 +135,13 @@ function capturing(index, cap_color) {
     // feature of this funcion: clearing and update board state
     let [x, y] = inv_flatten(index);
     let neighbors = [flatten(x + 1, y), flatten(x - 1, y),
-        flatten(x, y + 1), flatten(x, y - 1)
+        flatten(x, y + 1), flatten(x, y - 1), index
     ];
     neighbors.forEach(cur => {
         if (cur >= 0 && board_state[cur].content == cap_color) {
             board_state[cur].content = 0;
             board_state[cur].eye = 0;
-            capturing(cur, cap_color);
+            if (index != cur) capturing(cur, cap_color);
         }
     });
 
@@ -162,6 +162,30 @@ function update_board() {
 function resetVisited() {
     board_state.forEach(obj => obj.visited = false);
 }
+
+document.addEventListener('keydown', e => {
+    // 87 : W (White)
+    // 66 : B (Black)
+    // 78 : N (Normal)
+    let normal = document.querySelector(".select_sente input[id='normal']");
+    let black = document.querySelector(".select_sente input[id='black']");
+    let white = document.querySelector(".select_sente input[id='white']");
+    if (e.keyCode != 87 && e.keyCode != 66 && e.keyCode != 78) return;
+    white.checked = black.checked = normal.checked = false;
+    switch (e.keyCode) {
+        case 87:
+            white.checked = true;
+            break;
+        case 66:
+            black.checked = true;
+            break;
+        case 78:
+            normal.checked = true;
+            break;
+        default:
+            break;
+    }
+});
 
 canv.addEventListener('mousemove', e => {
     let [x, y] = cal_pos(e.offsetX, e.offsetY);
