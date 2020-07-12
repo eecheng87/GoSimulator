@@ -1,0 +1,33 @@
+doctype html
+html
+    head
+        link(rel='stylesheet', type='text/css', href='../css/paint.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    body.main
+        .board
+            canvas.board_cvs
+        .coordinate
+        ul.kifu_list
+            li !{kifu_text}
+        form.upload_form(method='POST', enctype='multipart/form-data', action='/uploads/upload')
+            input.file_button(type='file', name='filename')
+            input(type='submit', value='upload')
+        .selection_bar
+            .select_sente
+                .discrep Sente
+                input#normal.sente(type='checkbox', value='Yes', onclick="check(this, 'sente');")
+                | Normal
+                input#black.sente(type='checkbox', value='Yes', onclick="check(this, 'sente');")
+                | Black
+                input#white.sente(type='checkbox', value='Yes', onclick="check(this, 'sente');")
+                | White
+            .select_mode
+                .discrep Mode
+                input#simulation.mode(type='checkbox', value='Yes', onclick="check(this, 'mode');")
+                | Simulation
+                input#battle.mode(type='checkbox', value='Yes', onclick="check(this, 'mode');")
+                | Battle
+        script(src='../js/tool.js')
+        script(src='../js/paint.js')
+        script(src='../js/logic.js')
+        script(src='../js/check.js')

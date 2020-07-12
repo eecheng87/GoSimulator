@@ -1,13 +1,16 @@
 .main {
     display: grid;
     //grid-template-columns: 600px 1fr;
-    grid-template-areas: 'board coor_info' 'board up_form' 'selection_bar  selection_bar';
+    grid-template-areas: 'board coor_info' 'board kifu_list' 'board up_form' 'selection_bar  selection_bar';
     .board {
         grid-area: board;
     }
     .coordinate {
         grid-area: coor_info;
         font-size: large;
+    }
+    .kifu_list {
+        grid-area: kifu_list;
     }
     .upload_form {
         grid-area: up_form;

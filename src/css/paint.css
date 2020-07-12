@@ -1,12 +1,12 @@
 .main {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'board coor_info' 'board up_form' 'selection_bar  selection_bar';
+      grid-template-areas: 'board coor_info' 'board kifu_list' 'board up_form' 'selection_bar  selection_bar';
 }
 
 .main .board {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: board;
 }
@@ -18,14 +18,20 @@
   font-size: large;
 }
 
-.main .upload_form {
+.main .kifu_list {
   -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: kifu_list;
+}
+
+.main .upload_form {
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: up_form;
 }
 
 .main .selection_bar {
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: selection_bar;

@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="../css/paint.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="main">
@@ -11,6 +12,8 @@
     </div>
     <div class="coordinate">
     </div>
+    <ul class="kifu_list">
+    </ul>
     <form class="upload_form" method="POST" enctype="multipart/form-data" action="/uploads/upload">
         <input class="file_button" type="file" name="filename">
         <input type="submit" value="upload">
@@ -33,5 +36,6 @@
 <script src="../js/paint.js"></script>
 <script src="../js/logic.js"></script>
 <script src="../js/check.js"></script>
+<script src="../js/kifu_list.js"></script>
 
 </html>
