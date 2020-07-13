@@ -1,12 +1,17 @@
 .main {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'board coor_info' 'board kifu_list' 'board up_form' 'selection_bar  selection_bar';
+  color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#434343), to(#000000));
+  background: linear-gradient(#434343, #000000);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+      grid-template-areas: 'board  coor_info .' 'board list_title .' 'board kifu_list .' 'board up_form .' 'selection_bar  selection_bar .';
 }
 
 .main .board {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
+  -ms-grid-row-span: 4;
   -ms-grid-column: 1;
   grid-area: board;
 }
@@ -18,20 +23,55 @@
   font-size: large;
 }
 
-.main .kifu_list {
+.main .list_title {
+  text-align: center;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
+  grid-area: list_title;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding-bottom: 1rem;
+}
+
+.main .kifu_list {
+  text-align: center;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
   grid-area: kifu_list;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  z-index: 10;
+  background: #200948;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.main .kifu_list li {
+  margin: 0;
+  padding: 10px 20px;
+  background: #200948;
+  cursor: pointer;
+}
+
+.main .kifu_list li:hover {
+  background: #270a5a;
+}
+
+.main .kifu_list li:active {
+  background: #150531;
 }
 
 .main .upload_form {
-  -ms-grid-row: 3;
+  padding: 10px 20px;
+  -ms-grid-row: 4;
   -ms-grid-column: 2;
   grid-area: up_form;
 }
 
 .main .selection_bar {
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: selection_bar;

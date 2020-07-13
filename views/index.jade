@@ -7,8 +7,14 @@ html
         .board
             canvas.board_cvs
         .coordinate
-        ul.kifu_list
-            li !{kifu_text}
+        div.list_title 
+            div.text kifu list
+        ul.kifu_list 
+            each kifu_item, index in kifu_macro
+                li(class="kifu_item"+index)= kifu_item
+            else
+                li There is no kifu available now
+            - console.log(!{kifu_macro})
         form.upload_form(method='POST', enctype='multipart/form-data', action='/uploads/upload')
             input.file_button(type='file', name='filename')
             input(type='submit', value='upload')
@@ -31,3 +37,4 @@ html
         script(src='../js/paint.js')
         script(src='../js/logic.js')
         script(src='../js/check.js')
+

@@ -4,8 +4,8 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let indexRouter = require('./routes/index');
-let uploadRouter = require('./routes/uploads');
+let indexRouter = require('./routes/index').router;
+let uploadRouter = require('./routes/uploads').router;
 
 let app = express();
 

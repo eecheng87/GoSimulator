@@ -4,6 +4,7 @@ let util = require('util');
 let fs = require('fs');
 let multer = require('multer');
 const { render } = require('../app');
+let kifu_list_arr = [];
 
 const upload = multer({
     dest: "uploads/",
@@ -44,15 +45,11 @@ router.post('/upload', upload.single('filename'), (req, res, next) => {
                         }
         })
     }*/
-    //kifu_list.append_item(req.file.originalname);
 
-
-    console.log(req.file.originalname);
-    //res.send(req.file);
-    res.render('index', { kifu_text: req.file.originalname }, (err, html) => {
-        res.send(html);
-    });
-    //res.redirect('/');
+    kifu_list_arr.push(req.file.originalname);
+    /* redirect to HOME and get new front-end view rendered by new list */
+    res.redirect('/');
 });
 
-module.exports = router;
+module.exports.kifu_list_arr = kifu_list_arr;
+module.exports.router = router;
