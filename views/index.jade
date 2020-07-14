@@ -2,7 +2,9 @@ doctype html
 html
     head
         link(rel='stylesheet', type='text/css', href='../css/paint.css')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js')
     body.main
         .board
             canvas.board_cvs
@@ -14,7 +16,16 @@ html
                 li(class="kifu_item"+index)= kifu_item
             else
                 li There is no kifu available now
-            - console.log(!{kifu_macro})
+        div.control_bar 
+            div.controls
+                button.control.play_pause 
+                    i(class="fas fa-play")
+                button.control.step_forward
+                    i(class="fa fa-step-forward")
+                button.control.step_back
+                    i(class="fas fa-step-backward")
+                button.control.comment
+                    i(class="fas fa-closed-captioning")
         form.upload_form(method='POST', enctype='multipart/form-data', action='/uploads/upload')
             input.file_button(type='file', name='filename')
             input(type='submit', value='upload')
@@ -37,4 +48,6 @@ html
         script(src='../js/paint.js')
         script(src='../js/logic.js')
         script(src='../js/check.js')
+        script(src='../js/connect.js')
+        script(src='../js/control.js')
 

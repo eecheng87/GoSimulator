@@ -3,11 +3,16 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-
+let socket = require('socket.io');
+const port = 4000;
 let indexRouter = require('./routes/index').router;
 let uploadRouter = require('./routes/uploads').router;
 
+
 let app = express();
+let server = app.listen(port, () => {
+    console.log(`listen to port ${port}`);
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +26,18 @@ app.use(cookieParser());
 // acquire static data
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'src')));
+
+// socket set up
+let io = socket(server);
+io.on('connection', (socket) => {
+    socket.on('kifu_start', (data) => {
+        // response to who emit, instead of using io.sockets.emit
+        socket.emit('kifu_info', {
+            message: 'hihi'
+        });
+    });
+})
+
 
 // process routing
 app.use('/', indexRouter);

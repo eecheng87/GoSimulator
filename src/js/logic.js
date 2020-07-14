@@ -115,7 +115,6 @@ function isEnclosed(index, cap_color) {
     ];
     let ans = true;
     neighbors.forEach(cur => {
-        console.log(ans);
         if (cur >= 0 && board_state[cur].content == 0) {
             board_state[cur].visited = true;
             ans = ans && false;

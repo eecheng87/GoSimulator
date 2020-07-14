@@ -5,7 +5,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     //grid-template-columns: 600px 1fr;
-    grid-template-areas: 'board  coor_info .' 'board list_title .' 'board kifu_list .' 'board up_form .' 'selection_bar  selection_bar .';
+    grid-template-areas: 'board  coor_info .' 'board list_title .' 'board kifu_list .' 'board control_bar .' 'board up_form .' 'selection_bar  selection_bar .';
     .board {
         grid-area: board;
     }
@@ -39,6 +39,34 @@
             }
             &:active {
                 background: #150531;
+            }
+        }
+    }
+    .control_bar {
+        grid-area: control_bar;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        border: none;
+        outline: none;
+        //padding-top: 1rem;
+        .controls {
+            display: flex;
+            height: 100%;
+            button.control {
+                outline: none;
+                cursor: pointer;
+                border: none;
+                color: #ccc;
+                background: none;
+            }
+            .play_pause,
+            .step_forward,
+            .step_back,
+            .comment {
+                width: 25%;
+                &:hover {
+                    background-color: #151212;
+                }
             }
         }
     }
