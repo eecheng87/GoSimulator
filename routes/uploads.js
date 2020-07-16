@@ -45,7 +45,16 @@ router.post('/upload', upload.single('filename'), (req, res, next) => {
                         }
         })
     }*/
-
+    /* Example of file object:
+        { fieldname: 'filename',
+        originalname: 'AlphaGo_AlphaGo_第三局_繁體.sgf',
+        encoding: '7bit',
+        mimetype: 'application/octet-stream',
+        destination: 'uploads/',
+        filename: 'b65e0ebb460d4c32725bf1c47f870a6f',
+        path: 'uploads\\b65e0ebb460d4c32725bf1c47f870a6f',
+        size: 23035 }
+    */
     kifu_list_arr.push(req.file.originalname);
     /* redirect to HOME and get new front-end view rendered by new list */
     res.redirect('/');
