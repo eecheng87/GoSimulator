@@ -31,7 +31,12 @@ open server through `nodemon`, it will re-run when file was changed
 Parsing smart game format file and show each move as animation. Press stop whenever you want to stop.
 
 #### How to use
+1. select target .sgf file and upload
+2. if upload success, file name will show up on lists
+3. select target file which you want to view
+4. press 'play' button, kifu will play as video
 
+![](https://i.imgur.com/td9edOG.gif)
 
 
 ## Translation
