@@ -40,10 +40,13 @@ html
                 | White
             .select_mode
                 .discrep Mode
+                input#play_kifu.mode(type='checkbox', value='Yes', onclick="check(this, 'mode');")
+                | View kifu
                 input#simulation.mode(type='checkbox', value='Yes', onclick="check(this, 'mode');")
                 | Simulation
                 input#battle.mode(type='checkbox', value='Yes', onclick="check(this, 'mode');")
                 | Battle
+
         script(src='../js/tool.js')
         script(src='../js/paint.js')
         script(src='../js/logic.js')

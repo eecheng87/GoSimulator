@@ -18,6 +18,8 @@ function init_checkbox() {
     // configure default setting
     let sente = document.querySelector(".select_sente input[id='normal']");
     sente.checked = true;
+    let mode = document.querySelector(".select_mode input[id='play_kifu']");
+    mode.checked = true;
 }
 
 init_checkbox();

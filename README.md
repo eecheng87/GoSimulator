@@ -25,9 +25,23 @@ open server through `nodemon`, it will re-run when file was changed
 > nodemon ./bin/www
 ```
 
+## Feature
+
+### Visualize .sgf
+Parsing smart game format file and show each move as animation. Press stop whenever you want to stop.
+
+#### How to use
+
+
+
+## Translation
+Every term used in repo. is based on `dictionary.txt`. If you are confused, maybe can check this file first.
+
+
+
 ## About Smart Game Format
 
-### Visualize format
+### Visualize coordinate format
 
 ```text
 aa ba ca da ea fa ga ha ia ja ka la ma na oa pa qa ra sa
