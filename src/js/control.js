@@ -13,7 +13,7 @@ play_pause.addEventListener('click', (e) => {
             kifu_is_playing = true;
         } else {
             // re-start kifu video
-            kifu_routine_ref.
+            kifu_routine_ref = setInterval(() => paint_routine(kifu_global_obj), 500);
         }
 
     } else {

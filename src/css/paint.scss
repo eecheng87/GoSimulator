@@ -1,3 +1,21 @@
+@mixin kifu_list_sytle($content_code) {
+    margin: 0;
+    padding: 10px 20px;
+    background: #200948;
+    cursor: pointer;
+    &:hover {
+        background: #270a5a;
+    }
+    &:active {
+        background: #150531;
+    }
+    &:before {
+        font-family: 'Font Awesome 5 Free';
+        content: $content_code;
+        margin: 0 5px 0 -15px;
+    }
+}
+
 .main {
     display: grid;
     color: #fff; //text color 
@@ -29,24 +47,19 @@
         z-index: 10;
         background: #200948;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        li {
+        div {
             margin: 0;
             padding: 10px 20px;
             background: #200948;
             cursor: pointer;
-            &:hover {
-                background: #270a5a;
-            }
-            &:active {
-                background: #150531;
-            }
-            &:before {
-                font-family: 'Font Awesome 5 Free';
-                // f14a means check
-                // f0c8 means empty box
-                content: '\f0c8';
-                margin: 0 5px 0 -15px;
-            }
+        }
+        li.tiktok {
+            // f14a means check
+            @include kifu_list_sytle('\f14a');
+        }
+        li.emp_box {
+            // f0c8 means empty box
+            @include kifu_list_sytle('\f0c8');
         }
     }
     .control_bar {

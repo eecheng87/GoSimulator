@@ -1,3 +1,18 @@
+// check kufi list logic
+let ul_obj = document.querySelector('.kifu_list');
+
+ul_obj.addEventListener('click', e => {
+    if (e.target && e.target.nodeName == 'LI') {
+        // console.log(e.target.id);
+        let target_li = document.querySelector(`.kifu_list #${e.target.id}`);
+        let all_li = document.querySelectorAll('.kifu_list li');
+        all_li.forEach(li => {
+            li.className = li.getAttribute('id') === e.target.id ?
+                'tiktok' : 'emp_box';
+        });
+    }
+});
+
 // checkbox logic
 function check(input, clas) {
     let checkboxes = document.querySelectorAll(`.${clas}`);

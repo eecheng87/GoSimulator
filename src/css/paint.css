@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main {
   display: -ms-grid;
   display: grid;
@@ -48,24 +49,52 @@
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.main .kifu_list li {
+.main .kifu_list div {
   margin: 0;
   padding: 10px 20px;
   background: #200948;
   cursor: pointer;
 }
 
-.main .kifu_list li:hover {
+.main .kifu_list li.tiktok {
+  margin: 0;
+  padding: 10px 20px;
+  background: #200948;
+  cursor: pointer;
+}
+
+.main .kifu_list li.tiktok:hover {
   background: #270a5a;
 }
 
-.main .kifu_list li:active {
+.main .kifu_list li.tiktok:active {
   background: #150531;
 }
 
-.main .kifu_list li:before {
+.main .kifu_list li.tiktok:before {
   font-family: 'Font Awesome 5 Free';
-  content: '\f0c8';
+  content: "";
+  margin: 0 5px 0 -15px;
+}
+
+.main .kifu_list li.emp_box {
+  margin: 0;
+  padding: 10px 20px;
+  background: #200948;
+  cursor: pointer;
+}
+
+.main .kifu_list li.emp_box:hover {
+  background: #270a5a;
+}
+
+.main .kifu_list li.emp_box:active {
+  background: #150531;
+}
+
+.main .kifu_list li.emp_box:before {
+  font-family: 'Font Awesome 5 Free';
+  content: "";
   margin: 0 5px 0 -15px;
 }
 

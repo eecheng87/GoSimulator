@@ -13,9 +13,9 @@ html
             div.text kifu list
         ul.kifu_list 
             each kifu_item, index in kifu_macro
-                li(class="kifu_item"+index)= kifu_item
+                li(id="kifu_item"+index class="emp_box")= kifu_item
             else
-                li There is no kifu available now
+                div There is no kifu available now
         div.control_bar 
             div.controls
                 button.control.play_pause 
