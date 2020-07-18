@@ -97,7 +97,7 @@ function capture(x, y) {
         if (board_state[index].content != last.content) {
             //console.log('one dfs start');
             if (isEnclosed(index, board_state[index].content)) {
-                console.log('Some stones will be captured');
+                // console.log('Some stones will be captured');
                 capturing(index, board_state[index].content);
             }
         }

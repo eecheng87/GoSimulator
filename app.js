@@ -45,7 +45,10 @@ io.on('connection', (socket) => {
         */
         let kifu_obj = await kifu_parser.async_read('15e7b8a5f59ee0d0d89a666fe0d0c5c2').then(
             res => {
-                let arr = res.split(/\(;|;/);
+                // cut step after surrender
+                let tail_index = res.indexOf(')');
+                let new_res = res.substr(0, tail_index);
+                let arr = new_res.split(/\(;|;/);
                 let obj = [];
                 arr.forEach(element => {
                     if (element) {

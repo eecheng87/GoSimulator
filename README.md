@@ -34,10 +34,13 @@ Parsing smart game format file and show each move as animation. Press stop whene
 1. select target .sgf file and upload
 2. if upload success, file name will show up on lists
 3. select target file which you want to view
-4. press 'play' button, kifu will play as video
+4. press 'play' button, kifu will play as video (also support pressing `space` to achieve same effect as `play` button)
 
 ![](https://i.imgur.com/td9edOG.gif)
 
+**note:** 
+* press comment button, you will see extra comment
+* `space` keyCode is used as 32 in project, change your keycode that be compatible to your computer. modified code in `/src/js/control.js`.
 
 ## Translation
 Every term used in repo. is based on `dictionary.txt`. If you are confused, maybe can check this file first.

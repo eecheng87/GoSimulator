@@ -7,7 +7,7 @@
   background: linear-gradient(#434343, #000000);
   background-repeat: no-repeat;
   background-attachment: fixed;
-      grid-template-areas: 'board  coor_info .' 'board list_title .' 'board kifu_list .' 'board control_bar .' 'board up_form .' 'selection_bar  selection_bar .';
+      grid-template-areas: 'board  coor_info .' 'board list_title .' 'board kifu_list comment_box' 'board control_bar comment_box' 'board up_form .' 'selection_bar  selection_bar .';
 }
 
 .main .board {
@@ -98,6 +98,16 @@
   margin: 0 5px 0 -15px;
 }
 
+.main .comment_box {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  grid-area: comment_box;
+  margin: 1rem;
+  width: 100%;
+  display: none;
+}
+
 .main .control_bar {
   -ms-grid-row: 4;
   -ms-grid-column: 2;
@@ -119,7 +129,6 @@
   outline: none;
   cursor: pointer;
   border: none;
-  color: #ccc;
   background: none;
 }
 
@@ -128,6 +137,7 @@
 .main .control_bar .controls .step_back,
 .main .control_bar .controls .comment {
   width: 25%;
+  color: #ccc;
 }
 
 .main .control_bar .controls .play_pause:hover,
