@@ -17,7 +17,7 @@ run the app:
 > SET DEBUG=gosimulator:* & npm start
 ```
 
-open web through url: [http://localhost:3000/](http://localhost:3000/)
+open web through url: [http://localhost:4000/](http://localhost:4000/)
 
 ## Develop mode
 open server through `nodemon`, it will re-run when file was changed

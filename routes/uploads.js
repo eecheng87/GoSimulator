@@ -5,6 +5,7 @@ let fs = require('fs');
 let multer = require('multer');
 const { render } = require('../app');
 let kifu_list_arr = [];
+let kifu_dict = {}; // record relation hash name and alias name
 
 const upload = multer({
     dest: "uploads/",
@@ -55,10 +56,13 @@ router.post('/upload', upload.single('filename'), (req, res, next) => {
         path: 'uploads\\b65e0ebb460d4c32725bf1c47f870a6f',
         size: 23035 }
     */
+    kifu_dict[`${req.file.originalname}`] = req.file.filename;
+
     kifu_list_arr.push(req.file.originalname);
     /* redirect to HOME and get new front-end view rendered by new list */
     res.redirect('/');
 });
 
+module.exports.kifu_dict = kifu_dict;
 module.exports.kifu_list_arr = kifu_list_arr;
 module.exports.router = router;

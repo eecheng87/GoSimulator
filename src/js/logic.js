@@ -14,6 +14,7 @@ let global_flag = false;
 init_board_state();
 
 function init_board_state() {
+    board_state = [];
     for (const index of Array(19 * 19).keys()) {
         board_state.push({
             coordinates: `${inv_flatten(index)}`,

@@ -38,7 +38,6 @@ socket.on('kifu_data', (obj) => {
     // and server sent back prepared data structure `obj`
     routine_index = 0;
     kifu_len = obj['message'].length;
-    console.log(obj);
     kifu_global_obj = obj;
     init_board_state();
     kifu_routine_ref = setInterval(() => paint_routine(obj), 300);

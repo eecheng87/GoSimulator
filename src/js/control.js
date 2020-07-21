@@ -5,6 +5,7 @@ let forward_btn = document.querySelector('.step_forward');
 let comment_btn = document.querySelector('.comment');
 let comment_box = document.querySelector('.comment_box');
 let kifu_is_playing = false;
+let target_kifu_file_name = '';
 
 comment_btn.addEventListener('click', (e) => {
     if (comment_btn.style.color === "rgb(204, 204, 204)") {
@@ -34,7 +35,7 @@ forward_btn.addEventListener('click', (e) => {
 
 play_pause.addEventListener('click', play_cb);
 
-screen.addEventListener('keydown', (e) => {
+screen.addEventListener('keyup', (e) => {
     // key code of space is 32, change proper keycode for ur computer
     if (e.keyCode == 32) {
         play_cb();
@@ -61,7 +62,9 @@ function play_cb() {
 
 
 function fire() {
+
     socket.emit('kifu_start', {
-        message: 'mess from client'
+        message: 'message from client',
+        target: target_kifu_file_name
     });
 }

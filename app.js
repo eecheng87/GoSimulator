@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let socket = require('socket.io');
 const port = 4000;
+let upload = require('./routes/uploads');
 let indexRouter = require('./routes/index').router;
 let uploadRouter = require('./routes/uploads').router;
 let kifu_parser = require('./src/js/kifu_parser');
@@ -43,7 +44,7 @@ io.on('connection', (socket) => {
         }
 
         */
-        let kifu_obj = await kifu_parser.async_read('15e7b8a5f59ee0d0d89a666fe0d0c5c2').then(
+        let kifu_obj = await kifu_parser.async_read(upload.kifu_dict[obj.target]).then(
             res => {
                 // cut step after surrender
                 let tail_index = res.indexOf(')');
